@@ -1,165 +1,41 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Users, Search, MessageSquare, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Check, ChevronRight, Circle, MessageSquare, Search, Sparkles, Users } from "lucide-react";
 
-const features = [
-  {
-    icon: Users,
-    title: "Share your skills",
-    desc: "List what you can teach and what you want to learn. Let others discover you.",
-  },
-  {
-    icon: Search,
-    title: "Find the right match",
-    desc: "Search and explore community members by skill. Find people who complement you.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Connect and learn",
-    desc: "Send a skill exchange request, then message once it's accepted.",
-  },
-];
-
+const categories = ["Design", "Development", "Marketing", "Languages", "Photography", "Data"];
 const steps = [
-  { title: "Create your profile", desc: "Sign up and add your name, bio, and location." },
-  { title: "Add your skills", desc: "Tag what you can teach and what you want to learn." },
-  { title: "Explore & connect", desc: "Discover people and send exchange requests." },
-  { title: "Start learning", desc: "Message each other once a request is accepted." },
+  { number: "01", title: "Build your profile", desc: "Tell the community what you know and what you are curious to learn." },
+  { number: "02", title: "Find your people", desc: "Search a focused directory of peers by skill, place, or shared interest." },
+  { number: "03", title: "Make the exchange", desc: "Connect, start a conversation, and turn knowledge into momentum." },
 ];
+const benefits = ["No payments or awkward pitches", "Built for focused peer learning", "Simple, human conversations"];
 
 export default function LandingPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      {/* Nav */}
-      <nav className="border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-brand-600 flex items-center justify-center text-white">
-              <Sparkles size={20} />
-            </div>
-            <span className="font-bold text-lg text-gray-900">SkillSwap</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              to="/login"
-              className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-brand-700 transition"
-            >
-              Log in
-            </Link>
-            <Link
-              to="/signup"
-              className="px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition"
-            >
-              Sign up
-            </Link>
-          </div>
-        </div>
-      </nav>
+  return <div className="min-h-screen bg-white text-[#0a0a0a]">
+    <nav className="border-b border-[#e5e5e5]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 h-[72px] flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5"><span className="w-8 h-8 rounded-md bg-[#0a0a0a] text-white flex items-center justify-center"><Sparkles size={16} /></span><span className="font-semibold tracking-tight text-lg">SkillSwap</span></Link>
+        <div className="hidden md:flex items-center gap-8 text-sm text-[#666]"><a href="#explore" className="hover:text-black">Explore</a><a href="#how-it-works" className="hover:text-black">How it works</a><a href="#community" className="hover:text-black">Community</a></div>
+        <div className="flex items-center gap-2"><Link to="/login" className="hidden sm:inline-flex px-3.5 py-2 text-sm font-medium text-[#666] hover:text-black">Sign in</Link><Link to="/signup" className="inline-flex items-center gap-1.5 rounded-md bg-[#0a0a0a] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#262626]">Get started <ArrowUpRight size={15} /></Link></div>
+      </div>
+    </nav>
 
-      {/* Hero */}
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-20 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-medium mb-6">
-          <Sparkles size={15} />
-          Community Skill Exchange
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 tracking-tight max-w-3xl mx-auto leading-[1.1]">
-          Swap skills.{" "}
-          <span className="text-brand-600">Learn together.</span>
-        </h1>
-        <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          SkillSwap connects students and community members to share what they
-          know and learn what they don't. Teach a skill, learn a skill — no
-          money, just collaboration.
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-3">
-          <Link
-            to="/signup"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition"
-          >
-            Get started free
-            <ArrowRight size={18} />
-          </Link>
-          <Link
-            to="/login"
-            className="px-6 py-3 text-brand-700 font-semibold rounded-lg border border-brand-200 hover:bg-brand-50 transition"
-          >
-            I have an account
-          </Link>
-        </div>
-      </header>
-
-      {/* Features */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-        <div className="grid sm:grid-cols-3 gap-6">
-          {features.map((f) => (
-            <div
-              key={f.title}
-              className="p-6 rounded-2xl border border-gray-100 bg-white hover:shadow-md hover:border-brand-100 transition"
-            >
-              <div className="w-11 h-11 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-4">
-                <f.icon size={22} />
-              </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
-            </div>
-          ))}
-        </div>
+    <main>
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 pt-20 md:pt-28 pb-24 grid lg:grid-cols-[1.08fr_.92fr] gap-16 items-end">
+        <div><p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6b6b6b] mb-7">Community-powered learning</p><h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-[-0.055em] leading-[.96] max-w-3xl">LEARN SOMETHING.<br /><span className="text-[#6b6b6b]">TEACH SOMETHING.</span></h1><p className="mt-8 max-w-xl text-lg leading-8 text-[#6b6b6b]">SkillSwap connects people who want to learn with people who are ready to share what they know.</p><div className="mt-9 flex flex-wrap items-center gap-3"><Link to="/explore" className="accent-button arrow-on-hover inline-flex items-center gap-2 rounded-md bg-[#c8ff3d] px-5 py-3 text-sm font-semibold text-[#080808]">Explore skills <ArrowUpRight size={16} /></Link><Link to="/signup" className="arrow-on-hover inline-flex items-center gap-2 rounded-md border border-[#d4d4d4] px-5 py-3 text-sm font-medium hover:border-[#080808]">Start sharing <ChevronRight size={16} /></Link></div></div>
+        <div className="relative border border-[#d4d4d4] bg-[#f7f7f5] p-5 sm:p-7 min-h-[300px] overflow-hidden"><div className="absolute top-0 right-0 w-28 h-28 border-l border-b border-[#d4d4d4]" /><div className="flex items-center justify-between border-b border-[#d4d4d4] pb-4"><span className="text-sm font-medium">Live skill exchange</span><span className="text-xs text-[#6b6b6b]">04 / 06</span></div><div className="pt-7 space-y-3"><div className="lift-on-hover flex items-center gap-3 bg-white border border-[#e8e8e5] p-4"><span className="w-9 h-9 accent-mark flex items-center justify-center text-xs font-semibold">MC</span><div className="flex-1"><p className="text-sm font-medium">React <span className="text-[#6b6b6b]">→</span> Priya</p><p className="text-xs text-[#6b6b6b] mt-1">Frontend foundations</p></div><ArrowUpRight size={17} className="text-[#6b6b6b]" /></div><div className="lift-on-hover ml-8 flex items-center gap-3 bg-white border border-[#e8e8e5] p-4"><span className="w-9 h-9 bg-[#080808] text-white flex items-center justify-center text-xs font-semibold">AR</span><div className="flex-1"><p className="text-sm font-medium">Photography <span className="text-[#6b6b6b]">→</span> Aman</p><p className="text-xs text-[#6b6b6b] mt-1">Visual storytelling</p></div><ArrowUpRight size={17} className="text-[#6b6b6b]" /></div><div className="ml-16 flex items-center gap-3 border-l-2 border-[#c8ff3d] pl-4"><Circle size={8} fill="#c8ff3d" /><div><p className="text-sm font-medium">Knowledge moves when people do.</p><p className="text-xs text-[#6b6b6b] mt-1">Built around curiosity, not credentials.</p></div></div></div></div>
       </section>
 
-      {/* How it works */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            How it works
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {steps.map((s, i) => (
-              <div key={s.title} className="relative">
-                <div className="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold mb-4">
-                  {i + 1}
-                </div>
-                <h3 className="font-semibold text-gray-900 mb-1">{s.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="max-w-7xl mx-auto px-5 sm:px-8 pb-20"><div className="grid sm:grid-cols-3 border-y border-[#e8e8e5]">{[["01", "Skills shared", "2,400+"], ["02", "Active learners", "860+"], ["03", "Skill connections", "1,920+"]].map(([number, label, value]) => <div key={number} className="py-6 sm:px-6 first:pl-0 border-b sm:border-b-0 sm:border-r last:border-0 border-[#e8e8e5]"><p className="text-xs font-mono text-[#6b6b6b]">{number}</p><div className="flex items-end justify-between gap-3 mt-5"><span className="text-sm text-[#6b6b6b]">{label}</span><span className="text-3xl font-semibold tracking-[-0.04em]">{value}</span></div></div>)}</div></section>
 
-      {/* CTA */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-20 text-center">
-        <div className="p-10 md:p-14 rounded-3xl bg-brand-600 text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to swap skills?
-          </h2>
-          <p className="text-brand-100 text-lg mb-8 max-w-xl mx-auto">
-            Join the community and start exchanging knowledge today. It's free
-            and always will be.
-          </p>
-          <Link
-            to="/signup"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-700 font-semibold rounded-lg hover:bg-brand-50 transition"
-          >
-            Create your account
-            <ArrowRight size={18} />
-          </Link>
-        </div>
-        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-gray-500">
-          {["Free forever", "No payments", "Student-friendly"].map((t) => (
-            <li key={t} className="flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-brand-600" />
-              {t}
-            </li>
-          ))}
-        </ul>
-      </section>
+      <section id="explore" className="border-y border-[#e8e8e5] bg-[#f7f7f5]"><div className="max-w-7xl mx-auto px-5 sm:px-8 py-7 flex flex-col md:flex-row md:items-center gap-5"><span className="text-xs uppercase tracking-[0.18em] font-semibold text-[#6b6b6b] whitespace-nowrap">Popular on the network</span><div className="flex flex-wrap gap-x-7 gap-y-3">{categories.map((category) => <span key={category} className="text-sm text-[#444] flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#c8ff3d]" />{category}</span>)}</div></div></section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-100 py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-gray-500">
-          SkillSwap — a college final-year project. Built with React, Vite,
-          Tailwind & Supabase.
-        </div>
-      </footer>
-    </div>
-  );
+      <section id="how-it-works" className="max-w-7xl mx-auto px-5 sm:px-8 py-24 md:py-32"><div className="grid md:grid-cols-[.8fr_1.2fr] gap-14"><div><p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#666] mb-5">How it works</p><h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.04em] leading-tight">Small exchanges.<br />Real progress.</h2></div><div className="border-t border-[#0a0a0a]">{steps.map((step) => <div key={step.number} className="grid grid-cols-[58px_1fr] gap-5 py-6 border-b border-[#e5e5e5]"><span className="text-sm font-mono text-[#666]">{step.number}</span><div><h3 className="text-lg font-medium">{step.title}</h3><p className="text-sm text-[#666] leading-6 mt-2 max-w-lg">{step.desc}</p></div></div>)}</div></div></section>
+
+      <section className="bg-[#0a0a0a] text-white"><div className="max-w-7xl mx-auto px-5 sm:px-8 py-20 md:py-24 grid md:grid-cols-[1fr_.8fr] gap-12 items-end"><div><p className="text-xs uppercase tracking-[0.2em] text-[#a3a3a3] mb-5">A useful network</p><h2 className="text-4xl md:text-5xl font-semibold tracking-[-0.04em] leading-tight max-w-xl">Your next useful conversation is closer than you think.</h2></div><div><ul className="space-y-4 mb-8">{benefits.map((benefit) => <li key={benefit} className="flex items-center gap-3 text-sm text-[#d4d4d4]"><Check size={16} />{benefit}</li>)}</ul><Link to="/signup" className="inline-flex items-center gap-2 bg-white text-[#0a0a0a] px-5 py-3 rounded-md text-sm font-medium hover:bg-[#e5e5e5]">Get started <ArrowUpRight size={16} /></Link></div></div></section>
+
+      <section id="community" className="max-w-7xl mx-auto px-5 sm:px-8 py-20"><div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#0a0a0a] pb-6"><div><p className="text-xs uppercase tracking-[0.2em] font-semibold text-[#6b6b6b] mb-4">Made for momentum</p><h2 className="text-3xl font-semibold tracking-[-0.03em]">Learn in public. Teach with purpose.</h2></div><p className="text-sm text-[#6b6b6b] max-w-sm leading-6">SkillSwap keeps the mechanics simple so the exchange can stay human.</p></div><div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#e8e8e5] mt-2">{[[Users, "Find your peers", "Meet people with useful skills and an open mind."], [Search, "Stay curious", "Explore beyond your job title, major, or usual circle."], [MessageSquare, "Keep it moving", "Once you connect, the next step is just a message away."]].map(([Icon, title, desc]) => <div key={title} className="py-7 md:px-7 first:pl-0 last:pr-0"><Icon size={20} className="mb-10" /><h3 className="font-medium mb-2">{title}</h3><p className="text-sm text-[#6b6b6b] leading-6">{desc}</p></div>)}</div></section>
+    </main>
+
+    <footer className="border-t border-[#e5e5e5]"><div className="max-w-7xl mx-auto px-5 sm:px-8 py-7 flex flex-col sm:flex-row justify-between gap-3 text-xs text-[#666]"><span>© 2026 SkillSwap</span><span>Exchange knowledge, thoughtfully.</span></div></footer>
+  </div>;
 }
